@@ -1,0 +1,1 @@
+export const osspoiMaster = 'https://raw.githubusercontent.com/Be-Secure/besecure-osspoi-datastore/main/OSSP-Master.json';

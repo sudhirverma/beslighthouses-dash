@@ -1,21 +1,19 @@
 import * as React from "react";
 
-import { Card, Container, IconButton, Paper, Stack, Table, TableBody, TableCell, TableContainer, TablePagination, TableRow, Typography } from "@mui/material";
+import { Card, Container, Paper, Stack, Table, TableBody, TableCell, TableContainer, TablePagination, TableRow, Typography } from "@mui/material";
 import { useState } from "react";
 import { PoiListHead, PoiListToolbar } from "./components/PoiTable";
 
 // mock
 import USERLIST from './data/poi_data';
 import { filter } from "lodash";
-import Iconify from "./components/iconify";
 
 const TABLE_HEAD = [
+    { id: 'BeSId', label: 'BeS Id', alignRight: false },
     { id: 'name', label: 'Name', alignRight: false },
-    { id: 'company', label: 'Company', alignRight: false },
-    { id: 'role', label: 'Role', alignRight: false },
-    { id: 'isVerified', label: 'Verified', alignRight: false },
-    { id: 'status', label: 'Status', alignRight: false },
-    { id: '' },
+    { id: 'description', label: 'Description', alignRight: false },
+    { id: 'BeSTechStack', label: 'BeS Tech Stack', alignRight: false },
+    { id: 'License', label: 'License', alignRight: false }
 ];
 
 function applySortFilter(array: any, comparator: any, query: any) {
@@ -54,7 +52,7 @@ export default function UserPage() {
     const [selected, setSelected] = useState([]);
     const [filterName, setFilterName] = useState('');
     const [order, setOrder] = useState('asc');
-    const [orderBy, setOrderBy] = useState('name');
+    const [orderBy, setOrderBy] = useState('BeSId');
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleFilterByName = (event: any) => {

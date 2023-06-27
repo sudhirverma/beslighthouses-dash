@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { sample } from 'lodash';
 
-// ----------------------------------------------------------------------
+
+// export const languagesList = 
 
 const poi = [...Array(24)].map((_, index) => ({
   id: faker.datatype.uuid(),

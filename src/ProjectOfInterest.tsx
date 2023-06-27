@@ -17,6 +17,9 @@ import ProjectOfInterestTrack from "./ProjectOfInterestTrack";
 function ProjectOfInterest() {
     const theme = useTheme();
 
+    const languages = [];
+    
+
     return (
         <SiteWrapper>
             <Page.Content title="Projects Of Interest: 112">
@@ -25,10 +28,10 @@ function ProjectOfInterest() {
                         <AppCurrentVisits
                             title="Languages"
                             chartData={[
-                                { label: 'C', value: 4344 },
-                                { label: 'JavaScript', value: 5435 },
-                                { label: 'HTML', value: 1443 },
-                                { label: 'C++', value: 4443 },
+                                { label: 'C', value: 1 },
+                                { label: 'JavaScript', value: 2 },
+                                { label: 'HTML', value: 3 },
+                                { label: 'C++', value: 9 },
                             ]}
                             chartColors={[
                                 theme.palette.primary.main,
