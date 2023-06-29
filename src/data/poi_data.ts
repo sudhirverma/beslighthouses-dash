@@ -1,28 +1,13 @@
-import { faker } from '@faker-js/faker';
-import { sample } from 'lodash';
+import { fetchJsonReportOsspoiMaster } from '../utils/fatch_json_report';
+import { osspoiMaster } from '../data-store/dataStore';
 
 
 // export const languagesList = 
 
-const poi = [...Array(24)].map((_, index) => ({
-  id: faker.datatype.uuid(),
-  avatarUrl: `/assets/images/avatars/avatar_${index + 1}.jpg`,
-  name: faker.name.fullName(),
-  company: faker.company.name(),
-  isVerified: faker.datatype.boolean(),
-  status: sample(['active', 'banned']),
-  role: sample([
-    'Leader',
-    'Hr Manager',
-    'UI Designer',
-    'UX Designer',
-    'UI/UX Designer',
-    'Project Manager',
-    'Backend Developer',
-    'Full Stack Designer',
-    'Front End Developer',
-    'Full Stack Developer',
-  ]),
-}));
+export let poi = new Map<string, any>();
+
+export async function getJsonReportOsspoiMaster(): Promise<any> {
+  return await fetchJsonReportOsspoiMaster(osspoiMaster);
+}
 
 export default poi;
