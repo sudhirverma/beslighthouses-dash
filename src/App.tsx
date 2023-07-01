@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from "./HomePage";
 
-import "tabler-react/dist/Tabler.css";
+// import "tabler-react/dist/Tabler.css";
 import ProjectOfInterest from "./ProjectOfInterest";
 import BeSVersionHistory from "./BesVersionHistory";
 

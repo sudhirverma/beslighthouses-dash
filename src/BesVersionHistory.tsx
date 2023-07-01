@@ -3,9 +3,9 @@ import SiteWrapper from "./SiteWrapper";
 import { Card, CardContent, Grid } from "@mui/material";
 
 
-import {
-    Page
-} from "tabler-react";
+// import {
+//     Page
+// } from "tabler-react";
 
 function BeSVersionHistory() {
     const myStyle: any = {
