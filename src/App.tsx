@@ -5,6 +5,7 @@ import HomePage from "./HomePage";
 
 import "tabler-react/dist/Tabler.css";
 import ProjectOfInterest from "./ProjectOfInterest";
+import BeSVersionHistory from "./BesVersionHistory";
 
 type Props = {};
 
@@ -15,6 +16,7 @@ function App(props: Props) {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/POI" component={ProjectOfInterest} />
+          <Route exact path="/bes_version_history" component={BeSVersionHistory} />
         </Switch>
       </Router>
     </React.StrictMode>

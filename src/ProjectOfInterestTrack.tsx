@@ -7,7 +7,6 @@ import { PoiListHead, PoiListToolbar } from "./components/PoiTable";
 
 import { filter } from "lodash";
 import poi from "./data/poi_data";
-import { Link } from "react-router-dom";
 
 const TABLE_HEAD = [
     { id: 'id', label: 'BeS Id', alignRight: false },
@@ -123,7 +122,9 @@ export default function UserPage() {
                                                         </Typography>
                                                     </Stack>
                                                 </TableCell>
-                                                <TableCell align="left">{name}</TableCell>
+                                                <TableCell align="left">
+                                                    <a href="bes_version_history">{name} </a>
+                                                </TableCell>
                                                 <TableCell align="left">{description}</TableCell>
                                                 <TableCell align="left">{bes_technology_stack}</TableCell>
                                                 <TableCell align="left">{licenseName}</TableCell>
