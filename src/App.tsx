@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from "./HomePage";
 
-// import "tabler-react/dist/Tabler.css";
+import "tabler-react/dist/Tabler.css";
 import ProjectOfInterest from "./ProjectOfInterest";
 import BeSVersionHistory from "./BesVersionHistory";
 
@@ -16,7 +16,7 @@ function App(props: Props) {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/POI" component={ProjectOfInterest} />
-          <Route exact path="/bes_version_history" component={BeSVersionHistory} />
+          <Route exact path="/bes_version_history/:besId/:besName" component={BeSVersionHistory} />
         </Switch>
       </Router>
     </React.StrictMode>

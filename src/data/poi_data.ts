@@ -1,13 +1,26 @@
 import { fetchJsonReportOsspoiMaster } from '../utils/fatch_json_report';
-import { osspoiMaster } from '../data-store/dataStore';
+import { osspoiMaster, version_details } from '../data-store/dataStore';
 
 
-// export const languagesList = 
+export class ProjectOfInterestData {
+  public poi: any;
 
-export let poi = new Map<string, any>();
+  updateDataPoi(key:string, items: any): void {
+    this.poi = new Map<string, any>();
+    this.poi.set(key, items)
+  }
 
-export async function getJsonReportOsspoiMaster(): Promise<any> {
-  return await fetchJsonReportOsspoiMaster(osspoiMaster);
+  getPoiData(key: string): any {
+    return this.poi?.get(key)??[];
+  }
+
+  async getJsonReportOsspoiMaster(): Promise<any> {
+    return await fetchJsonReportOsspoiMaster(osspoiMaster);
+  }
+
+  async getJsonReportVersionSummary(besId: String, besName: string): Promise<any> {
+    return await fetchJsonReportOsspoiMaster(version_details + besId + '-' + besName + '-' + 'Versiondetails.json');
+  }
 }
 
-export default poi;
+export const projectOfInterestData = new ProjectOfInterestData();

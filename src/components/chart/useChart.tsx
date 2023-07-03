@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import merge from 'lodash/merge';
 // @mui
 import { useTheme, alpha } from '@mui/material/styles';

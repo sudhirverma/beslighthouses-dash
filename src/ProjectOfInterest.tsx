@@ -12,7 +12,13 @@ import {
 import SiteWrapper from "./SiteWrapper";
 import AppCurrentVisits from "./sections/PieChart";
 import ProjectOfInterestTrack from "./ProjectOfInterestTrack";
-import poi, { getJsonReportOsspoiMaster } from './data/poi_data';
+import { projectOfInterestData } from "./data/poi_data";
+
+export const fetchOsspoiMaterData = async () => {
+    const osspoi: any = JSON.parse(await projectOfInterestData.getJsonReportOsspoiMaster());
+    projectOfInterestData.updateDataPoi("Project_of_interest", osspoi.items);
+    return osspoi
+}
 
 async function countLanguages(setData: React.Dispatch<React.SetStateAction<never[]>>, setTrackedProject: React.Dispatch<React.SetStateAction<number>>, setTecStack: React.Dispatch<React.SetStateAction<never[]>>, cache: any) {
     let supportedLanguages: any = {
@@ -28,10 +34,8 @@ async function countLanguages(setData: React.Dispatch<React.SetStateAction<never
         // html: true
     }
     const tecStackForChart: any = [];
-    const osspoi: any = JSON.parse(await getJsonReportOsspoiMaster());
-
+    const osspoi = await fetchOsspoiMaterData();
     setTrackedProject(osspoi.items.length);
-    poi.set("Project_of_interest", osspoi.items);
     let languageCount: any = {};
     let besTecStack: any = {};
     for (let i = 0; i < osspoi.items.length; i++) {
@@ -68,7 +72,6 @@ function ProjectOfInterest() {
     useEffect(() => {
         countLanguages(setData, setTrackedProject, setTecStack, []);
     }, []);
-
     const theme = useTheme();
 
     return (
