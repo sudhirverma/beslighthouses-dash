@@ -21,9 +21,14 @@ export default function CveGraph({ title, subheader, chartLabels, chartData, ...
     labels: chartLabels,
     xaxis: { 
       title: {
-        text: 'Points',
+        text: 'Years',
       },
       type: 'datetime' 
+    },
+    yaxis: { 
+      title: {
+        text: '# Of Vulns',
+      }
     },
     tooltip: {
       shared: true,

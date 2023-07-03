@@ -125,8 +125,7 @@ function BeSVersionHistory() {
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6} lg={8}>
                         <CveGraph
-                            title="Website Visits"
-                            subheader="(+43%) than last year"
+                            title="Vulnerabilities by type & year"
                             chartLabels={[
                                 '01/01/2003',
                                 '02/01/2003',
@@ -182,7 +181,7 @@ function BeSVersionHistory() {
                     </Grid>
                     <Grid item xs={12} md={6} lg={4}>
                         <AppOrderTimeline
-                            title="Order Timeline"
+                            title="Assessment Report"
                             list={[...Array(5)].map((_, index) => ({
                                 id: faker.datatype.uuid(),
                                 title: [
