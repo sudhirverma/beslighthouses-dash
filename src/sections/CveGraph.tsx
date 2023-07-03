@@ -19,7 +19,12 @@ export default function CveGraph({ title, subheader, chartLabels, chartData, ...
     plotOptions: { bar: { columnWidth: '16%' } },
     fill: { type: chartData.map((i: any) => i.fill) },
     labels: chartLabels,
-    xaxis: { type: 'datetime' },
+    xaxis: { 
+      title: {
+        text: 'Points',
+      },
+      type: 'datetime' 
+    },
     tooltip: {
       shared: true,
       intersect: false,

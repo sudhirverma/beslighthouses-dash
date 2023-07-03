@@ -1,4 +1,6 @@
 import * as React from "react";
+
+import { faker } from '@faker-js/faker';
 import SiteWrapper from "./SiteWrapper";
 import { Card, CardContent, Container, Grid, MenuItem, Select } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -10,6 +12,7 @@ import {
 import { useParams } from "react-router-dom";
 import { projectOfInterestData } from "./data/poi_data";
 import CveGraph from "./sections/CveGraph";
+import AppOrderTimeline from "./sections/AppOrderTimeline";
 
 
 export const osspoiMasterAndSummary = async (setData: any, besId: string, besName: string, setVersionSummary: any) => {
@@ -51,10 +54,10 @@ function BeSVersionHistory() {
     };
     return (
         <SiteWrapper>
-            {/* {
+            {
                 data.map((item: any) => {
                     if (`:${item.name}` === besName) {
-                        return(
+                        return (
                             <>
                                 <Page.Content key={'pagekey'} title={`Project: ${item.name}`}>
                                     <Card key={'cardkey'}>
@@ -98,7 +101,7 @@ function BeSVersionHistory() {
                                                 })}
                                                 <Grid key={'gridkey6'} item xs={4}>
                                                     <span style={myStyle}>Version:</span>
-                                                    <Select key={'test'} style={{padding: '0px'}}  className={classes.select} value={selectedOption} onChange={handleOptionChange}>
+                                                    <Select key={'test'} style={{ padding: '0px' }} className={classes.select} value={selectedOption} onChange={handleOptionChange}>
                                                         {versionSummary.map((option: any, index: any) => (
                                                             <MenuItem key={index} value={option.version}>
                                                                 {option.version}
@@ -108,7 +111,7 @@ function BeSVersionHistory() {
                                                 </Grid>
                                             </Grid>
                                         </CardContent>
-                                        <div style={{padding: '0px 0px 16px 16px'}}>
+                                        <div style={{ padding: '0px 0px 16px 16px' }}>
                                             <span style={myStyle}>Description:</span> {item.description}
                                         </div>
                                     </Card>
@@ -117,80 +120,85 @@ function BeSVersionHistory() {
                         )
                     }
                 })
-            } */}
-            <Container maxWidth="xl">
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={8}>
-            <CveGraph
-              title="Website Visits"
-              subheader="(+43%) than last year"
-              chartLabels={[
-                '2001',
-                '2002',
-                '2003',
-                '2004',
-                '2005',
-                '2006',
-                '2007',
-                '2008',
-                '2009',
-                '2010',
-                '2011',
-              ]}
-              chartData={[
-                {
-                  name: 'Team A',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30],
-                },
-                {
-                  name: 'Team B',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                },
-                {
-                  name: 'Team C',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-                {
-                  name: 'Team D',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-                {
-                  name: 'Team E',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-                {
-                  name: 'Team F',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-                {
-                  name: 'Team G',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-                {
-                  name: 'Team H',
-                  type: 'line',
-                  fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                },
-              ]}
-            />
-          </Grid>
-        </Grid>
-      </Container>
+            }
+            <Container maxWidth="lg">
+                <Grid container spacing={3}>
+                    <Grid item xs={12} md={6} lg={8}>
+                        <CveGraph
+                            title="Website Visits"
+                            subheader="(+43%) than last year"
+                            chartLabels={[
+                                '01/01/2003',
+                                '02/01/2003',
+                                '03/01/2003',
+                                '04/01/2003',
+                                '05/01/2003',
+                                '06/01/2003',
+                                '07/01/2003',
+                                '08/01/2003',
+                                '09/01/2003',
+                                '10/01/2003',
+                                '11/01/2003',
+                            ]}
+                            chartData={[
+                                {
+                                    name: 'Team A',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                                },
+                                {
+                                    name: 'Team B',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                },
+                                {
+                                    name: 'Team C',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                },
+                                {
+                                    name: 'Team D',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                                },
+                                {
+                                    name: 'Team E',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                },
+                                {
+                                    name: 'Team F',
+                                    type: 'line',
+                                    fill: 'solid',
+                                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                },
+                            ]}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={4}>
+                        <AppOrderTimeline
+                            title="Order Timeline"
+                            list={[...Array(5)].map((_, index) => ({
+                                id: faker.datatype.uuid(),
+                                title: [
+                                    '1983, orders, $4220',
+                                    '12 Invoices have been paid',
+                                    'Order #37745 from September',
+                                    'New order placed #XF-2356',
+                                    'New order placed #XF-2346',
+                                ][index],
+                                type: `order${index + 1}`,
+                                time: faker.date.past(),
+                            }))}
+                        />
+                    </Grid>
+                </Grid>
+            </Container>
         </SiteWrapper>
     );
 }
