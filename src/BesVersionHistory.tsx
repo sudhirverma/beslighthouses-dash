@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { faker } from '@faker-js/faker';
 import SiteWrapper from "./SiteWrapper";
 import { Card, CardContent, Container, Grid, MenuItem, Select } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -115,89 +114,78 @@ function BeSVersionHistory() {
                                             <span style={myStyle}>Description:</span> {item.description}
                                         </div>
                                     </Card>
+                                    <Container style={{ paddingTop: '20px' }} maxWidth="lg">
+                                        <Grid container spacing={3}>
+                                            <Grid item xs={12} md={6} lg={8}>
+                                                <CveGraph
+                                                    title="Vulnerabilities by type & year"
+                                                    chartLabels={[
+                                                        '01/01/2003',
+                                                        '02/01/2003',
+                                                        '03/01/2003',
+                                                        '04/01/2003',
+                                                        '05/01/2003',
+                                                        '06/01/2003',
+                                                        '07/01/2003',
+                                                        '08/01/2003',
+                                                        '09/01/2003',
+                                                        '10/01/2003',
+                                                        '11/01/2003',
+                                                    ]}
+                                                    chartData={[
+                                                        {
+                                                            name: 'Team A',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                                                        },
+                                                        {
+                                                            name: 'Team B',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                                        },
+                                                        {
+                                                            name: 'Team C',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                                        },
+                                                        {
+                                                            name: 'Team D',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                                                        },
+                                                        {
+                                                            name: 'Team E',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                                        },
+                                                        {
+                                                            name: 'Team F',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                                        },
+                                                    ]}
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} md={6} lg={4}>
+                                                <AppOrderTimeline
+                                                    title="Assessment Report"
+                                                />
+                                            </Grid>
+                                        </Grid>
+                                    </Container>
                                 </Page.Content>
+
                             </>
                         )
                     }
                 })
             }
-            <Container maxWidth="lg">
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={6} lg={8}>
-                        <CveGraph
-                            title="Vulnerabilities by type & year"
-                            chartLabels={[
-                                '01/01/2003',
-                                '02/01/2003',
-                                '03/01/2003',
-                                '04/01/2003',
-                                '05/01/2003',
-                                '06/01/2003',
-                                '07/01/2003',
-                                '08/01/2003',
-                                '09/01/2003',
-                                '10/01/2003',
-                                '11/01/2003',
-                            ]}
-                            chartData={[
-                                {
-                                    name: 'Team A',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                                },
-                                {
-                                    name: 'Team B',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                },
-                                {
-                                    name: 'Team C',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                },
-                                {
-                                    name: 'Team D',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                                },
-                                {
-                                    name: 'Team E',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                },
-                                {
-                                    name: 'Team F',
-                                    type: 'line',
-                                    fill: 'solid',
-                                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                },
-                            ]}
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
-                        <AppOrderTimeline
-                            title="Assessment Report"
-                            list={[...Array(5)].map((_, index) => ({
-                                id: faker.datatype.uuid(),
-                                title: [
-                                    '1983, orders, $4220',
-                                    '12 Invoices have been paid',
-                                    'Order #37745 from September',
-                                    'New order placed #XF-2356',
-                                    'New order placed #XF-2346',
-                                ][index],
-                                type: `order${index + 1}`,
-                                time: faker.date.past(),
-                            }))}
-                        />
-                    </Grid>
-                </Grid>
-            </Container>
         </SiteWrapper>
     );
 }

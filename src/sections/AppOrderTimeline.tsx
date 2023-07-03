@@ -1,20 +1,30 @@
 // @mui
 import PropTypes from 'prop-types';
-import { Card, Typography, CardHeader, CardContent } from '@mui/material';
+import { Card, Typography, CardHeader, CardContent, Grid } from '@mui/material';
 // utils
 
 // ----------------------------------------------------------------------
 
 AppOrderTimeline.propTypes = {
   title: PropTypes.string,
-  subheader: PropTypes.string,
-  list: PropTypes.array.isRequired,
 };
 
-export default function AppOrderTimeline({ title, subheader, list, ...other }: any) {
+export default function AppOrderTimeline({ title, ...other }: any) {
   return (
     <Card {...other}>
-      <CardHeader title={title} subheader={subheader} />
+      <CardHeader title={title} />
+      <CardContent key={'CardContentkey'}>
+        {/* <Grid container spacing={9}>
+        <Grid> */}
+          <span>sudhir</span>
+          <span>pooja</span>
+        {/* </Grid>
+        <Grid>
+        </Grid>
+        
+      </Grid> */}
+      </CardContent>
+      
     </Card>
   );
 }
