@@ -114,7 +114,7 @@ function BeSVersionHistory() {
                                             <span style={myStyle}>Description:</span> {item.description}
                                         </div>
                                     </Card>
-                                    <Container style={{ paddingTop: '20px' }} maxWidth="lg">
+                                    <Container style={{ paddingTop: '20px', paddingLeft: '0px', paddingRight: '0px' }} maxWidth="lg">
                                         <Grid container spacing={3}>
                                             <Grid item xs={12} md={6} lg={8}>
                                                 <CveGraph
