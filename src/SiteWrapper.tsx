@@ -42,14 +42,12 @@ const navBarItems: Array<navItem> = [
     value: "Home",
     to: "/",
     icon: "home",
-    // LinkComponent: withRouter(NavLink),
     useExact: true,
   },
   {
     value: "Project Of Interest",
     icon: "box",
     to: "/POI",
-    // LinkComponent: withRouter(ProjectOfInterest),
     useExact: true,
   },
 ];

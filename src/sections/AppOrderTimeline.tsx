@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetchJsonReportOsspoiMaster } from "../utils/fatch_json_report";
 import { assessment_datastore } from "../data-store/dataStore";
 import { assessment_path, assessment_report } from "../data-store/assessmentReport";
+import { Link } from "react-router-dom";
 
 AppOrderTimeline.propTypes = {
   title: PropTypes.string,
@@ -31,8 +32,6 @@ const verifyLink = async (link: any, setLinkStatus: any) => {
 };
 
 const CheckLink = ({ version, name, report }: any) => {
-  let sudhir = version;
-  console.log(sudhir);
   const [linkStatus, setLinkStatus]: any = useState({});
   useEffect(() => {
     if (version.trim()) {
@@ -48,11 +47,13 @@ const CheckLink = ({ version, name, report }: any) => {
     return (
       <Typography variant="subtitle1" color="inherit">{linkStatus.criticality_score}</Typography>
     );
+  const pathName: string = `/bes_assessment_report/:${name}/:${version}/:${report}`
   if (report === "Scorecard" && linkStatusLength !== 0) {
-    return <a href={`/bes_version_history/${version}/${name}`}>{linkStatus.score}</a>;
+    return <Link to={{pathname: pathName, state: linkStatus}}>{linkStatus.score}</Link>;
+    // href={`/bes_version_history/${version}/${name}`}
   }
   if (linkStatusLength !== 0)
-    return <a href={`/bes_version_history/${version}/${name}`}>Click here</a>;
+    return <Link to={{pathname: pathName, state: linkStatus}}>Click here</Link>;
   return (
     <Typography variant="subtitle1" color="inherit">
       Not Available
