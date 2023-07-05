@@ -169,12 +169,42 @@ function BeSVersionHistory() {
                                                             fill: 'solid',
                                                             data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                                                         },
+                                                        {
+                                                            name: 'Team G',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                                        },
+                                                        {
+                                                            name: 'Team H',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                                        },
+                                                        {
+                                                            name: 'Team I',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                                        },
+                                                        {
+                                                            name: 'Team J',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                                                        },
+                                                        {
+                                                            name: 'Team K',
+                                                            type: 'line',
+                                                            fill: 'solid',
+                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                                                        },
                                                     ]}
                                                 />
                                             </Grid>
                                             <Grid item xs={12} md={6} lg={4}>
                                                 <AppOrderTimeline
-                                                    title="Assessment Report"
+                                                    title="Assessment Report" name={besName} id={besId}
                                                 />
                                             </Grid>
                                         </Grid>

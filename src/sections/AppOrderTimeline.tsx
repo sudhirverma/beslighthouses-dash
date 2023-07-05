@@ -14,13 +14,15 @@ import {
 
 AppOrderTimeline.propTypes = {
   title: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
 };
 
 const dividerDiv = (index: number) => {
   if (index !== 0) return <Divider sx={{ my: 1.5 }} />;
 };
 
-export default function AppOrderTimeline({ title, ...other }: any) {
+export default function AppOrderTimeline({ title, name, id, ...other }: any) {
   const report: string[] = [
     "Scorecard",
     "Criticality Score",
@@ -73,12 +75,8 @@ export default function AppOrderTimeline({ title, ...other }: any) {
                               {/* <Typography variant="subtitle1" color="inherit">
                             Not Available
                           </Typography> */}
-                              <Link
-                                href="https://example.com"
-                                target="_blank"
-                                rel="noopener"
-                              >
-                                Click here
+                              <Link>
+                                <a href={`/bes_version_history/${id}/${name}`}>Click here</a>
                               </Link>
                             </Grid>
                           </Grid>
