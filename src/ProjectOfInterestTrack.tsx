@@ -16,7 +16,7 @@ const TABLE_HEAD = [
     { id: 'License', label: 'License', alignRight: false }
 ];
 
-function applySortFilter(array: any, comparator: any, query: any) {
+export function applySortFilter(array: any, comparator: any, query: any) {
     const stabilizedThis = array.map((el: any, index: any) => [el, index]);
     stabilizedThis.sort((a: any, b: any) => {
         const order = comparator(a[0], b[0]);
@@ -39,7 +39,7 @@ function descendingComparator(a: { [x: string]: number; }, b: { [x: string]: num
     return 0;
 }
 
-function getComparator(order: string, orderBy: string) {
+export function getComparator(order: string, orderBy: string) {
     return order === 'desc'
         ? (a: any, b: any) => descendingComparator(a, b, orderBy)
         : (a: any, b: any) => -descendingComparator(a, b, orderBy);

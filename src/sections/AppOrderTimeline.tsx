@@ -17,7 +17,7 @@ const dividerDiv = (index: number) => {
   if (index !== 0) return <Divider sx={{ my: 1.5 }} />;
 };
 
-const verifyLink = async (link: any, setLinkStatus: any) => {
+export const verifyLink = async (link: any, setLinkStatus: any) => {
   try {
     const response = await fetchJsonReportOsspoiMaster(link);
     try {
