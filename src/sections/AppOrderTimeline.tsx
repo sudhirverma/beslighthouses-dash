@@ -1,28 +1,71 @@
 // @mui
 import PropTypes from "prop-types";
-import {
-  Card,
-  Typography,
-  CardContent,
-  Grid,
-  Divider,
-  Link,
-} from "@mui/material";
-// utils
-
-// ----------------------------------------------------------------------
+import { Card, Typography, CardContent, Grid, Divider } from "@mui/material";
+import { useEffect, useState } from "react";
+import { fetchJsonReportOsspoiMaster } from "../utils/fatch_json_report";
+import { assessment_datastore } from "../data-store/dataStore";
+import { assessment_path, assessment_report } from "../data-store/assessmentReport";
 
 AppOrderTimeline.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
-  id: PropTypes.string,
+  version: PropTypes.string,
 };
 
 const dividerDiv = (index: number) => {
   if (index !== 0) return <Divider sx={{ my: 1.5 }} />;
 };
 
-export default function AppOrderTimeline({ title, name, id, ...other }: any) {
+const verifyLink = async (link: any, setLinkStatus: any) => {
+  try {
+    const response = await fetchJsonReportOsspoiMaster(link);
+    try {
+      let data = JSON.parse(response);
+      setLinkStatus(data);
+    } catch (err) {
+      // ignore
+    }
+  } catch (error) {
+    // ignore
+  }
+};
+
+const CheckLink = ({ version, name, report }: any) => {
+  let sudhir = version;
+  console.log(sudhir);
+  const [linkStatus, setLinkStatus]: any = useState({});
+  useEffect(() => {
+    if (version.trim()) {
+      let link: string = `${assessment_datastore}/${name}/${version}/${assessment_path[report]}/${name}-${version}-${assessment_report[report]}-report.json`
+      verifyLink(
+        link,
+        setLinkStatus
+      );
+    }
+  }, [version]);
+  let linkStatusLength: number = Object.values(linkStatus).length;
+  if (report === "Criticality Score" && linkStatusLength !== 0)
+    return (
+      <Typography variant="subtitle1" color="inherit">{linkStatus.criticality_score}</Typography>
+    );
+  if (report === "Scorecard" && linkStatusLength !== 0) {
+    return <a href={`/bes_version_history/${version}/${name}`}>{linkStatus.score}</a>;
+  }
+  if (linkStatusLength !== 0)
+    return <a href={`/bes_version_history/${version}/${name}`}>Click here</a>;
+  return (
+    <Typography variant="subtitle1" color="inherit">
+      Not Available
+    </Typography>
+  );
+};
+
+export default function AppOrderTimeline({
+  title,
+  name,
+  version,
+  ...other
+}: any) {
   const report: string[] = [
     "Scorecard",
     "Criticality Score",
@@ -72,12 +115,11 @@ export default function AppOrderTimeline({ title, name, id, ...other }: any) {
                             justifyContent="space-between"
                           >
                             <Grid item>
-                              {/* <Typography variant="subtitle1" color="inherit">
-                            Not Available
-                          </Typography> */}
-                              <Link>
-                                <a href={`/bes_version_history/${id}/${name}`}>Click here</a>
-                              </Link>
+                              <CheckLink
+                                version={version}
+                                name={name}
+                                report={value}
+                              />
                             </Grid>
                           </Grid>
                         </Grid>

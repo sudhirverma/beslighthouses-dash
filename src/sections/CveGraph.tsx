@@ -23,7 +23,21 @@ export default function CveGraph({ title, subheader, chartLabels, chartData, ...
       title: {
         text: 'Years',
       },
-      type: 'datetime' 
+      type: 'datetime',
+      labels: {
+        formatter: function (value: any) {
+          const date = new Date(value);
+          return date.getFullYear().toString();
+        },
+      },
+      tooltip: {
+        x: {
+          formatter: function (value: any) {
+            const date = new Date(value);
+            return date.getFullYear().toString();
+          },
+        },
+      },
     },
     yaxis: { 
       title: {
@@ -36,7 +50,7 @@ export default function CveGraph({ title, subheader, chartLabels, chartData, ...
       y: {
         formatter: (y: any) => {
           if (typeof y !== 'undefined') {
-            return `${y.toFixed(0)} visits`;
+            return `${y.toFixed(0)}`;
           }
           return y;
         },

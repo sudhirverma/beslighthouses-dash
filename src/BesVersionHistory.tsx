@@ -51,6 +51,13 @@ function BeSVersionHistory() {
     const handleOptionChange = (event: any) => {
         setSelectedOption(event.target.value);
     };
+    const chartLabelsData: any = [
+    ];
+    const chartContentData: any = {
+    };
+
+    const gridJsx: JSX.Element[] = []
+
     return (
         <SiteWrapper>
             {
@@ -82,9 +89,9 @@ function BeSVersionHistory() {
                                                                 </>
                                                             )
                                                         }
-                                                        return option['cve_details'].map((cve: any) => {
+                                                        option['cve_details'].forEach((cve: any) => {
                                                             if (cve.Year === 'Total') {
-                                                                return (
+                                                                gridJsx.push(
                                                                     <>
                                                                         <Grid key={'gridkey14'} item xs={4}>
                                                                             <span style={myStyle}>Release Date:</span> {option.release_date}
@@ -94,8 +101,20 @@ function BeSVersionHistory() {
                                                                         </Grid>
                                                                     </>
                                                                 )
+                                                            } else {
+                                                                const cveData = Object.keys(cve);
+                                                                cveData.forEach(value => {
+                                                                    if (value === 'Year') {
+                                                                        chartLabelsData.push(cve.Year)
+                                                                    } else if (cve?.[value]) {
+                                                                        if (!chartContentData[value]) chartContentData[value] = {name: value, type: 'line', fill: 'solid', data: [cve[value]]};
+                                                                        else chartContentData[value].data.push(cve[value]);
+                                                                    }
+                                                                })
+
                                                             }
                                                         })
+                                                        return gridJsx
                                                     }
                                                 })}
                                                 <Grid key={'gridkey6'} item xs={4}>
@@ -119,92 +138,13 @@ function BeSVersionHistory() {
                                             <Grid item xs={12} md={6} lg={8}>
                                                 <CveGraph
                                                     title="Vulnerabilities by type & year"
-                                                    chartLabels={[
-                                                        '01/01/2003',
-                                                        '02/01/2003',
-                                                        '03/01/2003',
-                                                        '04/01/2003',
-                                                        '05/01/2003',
-                                                        '06/01/2003',
-                                                        '07/01/2003',
-                                                        '08/01/2003',
-                                                        '09/01/2003',
-                                                        '10/01/2003',
-                                                        '11/01/2003',
-                                                    ]}
-                                                    chartData={[
-                                                        {
-                                                            name: 'Team A',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                                                        },
-                                                        {
-                                                            name: 'Team B',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                                        },
-                                                        {
-                                                            name: 'Team C',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                                        },
-                                                        {
-                                                            name: 'Team D',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-                                                        },
-                                                        {
-                                                            name: 'Team E',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                                        },
-                                                        {
-                                                            name: 'Team F',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                                        },
-                                                        {
-                                                            name: 'Team G',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                                        },
-                                                        {
-                                                            name: 'Team H',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                                        },
-                                                        {
-                                                            name: 'Team I',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                                        },
-                                                        {
-                                                            name: 'Team J',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                                                        },
-                                                        {
-                                                            name: 'Team K',
-                                                            type: 'line',
-                                                            fill: 'solid',
-                                                            data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-                                                        },
-                                                    ]}
+                                                    chartLabels={chartLabelsData}
+                                                    chartData={Object.values(chartContentData)}
                                                 />
                                             </Grid>
                                             <Grid item xs={12} md={6} lg={4}>
                                                 <AppOrderTimeline
-                                                    title="Assessment Report" name={besName} id={besId}
+                                                    title="Assessment Report" name={besName.slice(1)} version={selectedOption}
                                                 />
                                             </Grid>
                                         </Grid>
