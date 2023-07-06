@@ -14,21 +14,24 @@ import {
 import { applySortFilter, getComparator } from "../../ProjectOfInterestTrack";
 
 const TABLE_HEAD = [
-  { id: "name", label: "Name", alignRight: false },
-  { id: "score", label: "Score", alignRight: false },
-  { id: "reason", label: "Reason", alignRight: false },
-  { id: "details", label: "Details", alignRight: false },
+  { id: "Component", label: "Component", alignRight: false },
+  { id: "Type", label: "Type", alignRight: false },
+  { id: "Messaage", label: "Messaage", alignRight: false },
+  { id: "Line", label: "Line", alignRight: false }
 ];
 
 // Fixme: Code refactor
 
-export default function ScorecardTable({ data }: any) {
+export default function Sonarqube({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [filterName, setFilterName] = useState("");
-  let scorecardData: any = data?.checks ?? [];
+
+  let sonarqubeData: any;
+  if (data?.issues) sonarqubeData = data?.issues;
+  else sonarqubeData = [];
   const filteredUsers = applySortFilter(
-    scorecardData,
+    sonarqubeData,
     getComparator("desc", "name"),
     filterName
   );
@@ -69,22 +72,22 @@ export default function ScorecardTable({ data }: any) {
                   .map(
                     (
                       row: {
-                        name: string;
-                        score: any;
-                        reason: any;
-                        details: string[];
+                        component: string;
+                        type: string;
+                        message: string;
+                        line: string;
                       },
                       index: number
                     ) => {
-                      const { name, score, reason, details } = row;
+                        const { component, type, message, line } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
-                            {name}
+                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
+                            {component}
                           </TableCell>
-                          <TableCell align="left">{score}</TableCell>
-                          <TableCell align="left">{reason}</TableCell>
-                          <TableCell align="left">{details}</TableCell>
+                          <TableCell align="left">{type}</TableCell>
+                          <TableCell align="left">{message}</TableCell>
+                          <TableCell align="left">{line}</TableCell>
                         </TableRow>
                       );
                     }
@@ -103,7 +106,7 @@ export default function ScorecardTable({ data }: any) {
             }}
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={scorecardData.length}
+            count={sonarqubeData.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

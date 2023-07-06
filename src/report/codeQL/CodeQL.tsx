@@ -23,17 +23,21 @@ const TABLE_HEAD = [
   { id: "End Line", label: "End Line", alignRight: false },
 ];
 
+// Fixme: Code refactor
+
 export default function CodeQL({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [filterName, setFilterName] = useState("");
-  let codeQLData: any = data;
+
+  let codeQlData: any;
+  if (data?.length) codeQlData = data;
+  else codeQlData = [];
   const filteredUsers = applySortFilter(
-    codeQLData,
+    codeQlData,
     getComparator("desc", "name"),
     filterName
   );
-  debugger;
   const handleChangePage = (
     event: any,
     newPage: React.SetStateAction<number>
@@ -65,36 +69,30 @@ export default function CodeQL({ data }: any) {
                   ))}
                 </TableRow>
               </TableHead>
-              {/* <TableBody>
+              <TableBody>
                 {filteredUsers
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map(
                     (
-                      row: {
-                        rule: any;
-                        score: any;
-                        reason: any;
-                        details: string[];
-                      },
+                      row: any,
                       index: number
                     ) => {
-                      const { rule, score, reason, details } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
                           <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
-                            {name}
+                            {row.rule.description}
                           </TableCell>
-                          <TableCell align="left">{score}</TableCell>
-                          <TableCell align="left">{reason}</TableCell>
-                          <TableCell align="left">{details}</TableCell>
-                          <TableCell align="left">{score}</TableCell>
-                          <TableCell align="left">{reason}</TableCell>
-                          <TableCell align="left">{details}</TableCell>
+                          <TableCell align="left">{row.rule.security_severity_level}</TableCell>
+                          <TableCell align="left">{row.most_recent_instance.environment}</TableCell>
+                          <TableCell align="left">{row.most_recent_instance.message.text}</TableCell>
+                          <TableCell align="left">{row.most_recent_instance.location.path}</TableCell>
+                          <TableCell align="left">{row.most_recent_instance.location.start_line}</TableCell>
+                          <TableCell align="left">{row.most_recent_instance.location.end_line}</TableCell>
                         </TableRow>
                       );
                     }
                   )}
-              </TableBody> */}
+              </TableBody>
             </Table>
           </TableContainer>
           <TablePagination
@@ -108,7 +106,7 @@ export default function CodeQL({ data }: any) {
             }}
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={codeQLData.length}
+            count={codeQlData.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

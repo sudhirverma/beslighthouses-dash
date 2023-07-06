@@ -14,21 +14,24 @@ import {
 import { applySortFilter, getComparator } from "../../ProjectOfInterestTrack";
 
 const TABLE_HEAD = [
-  { id: "name", label: "Name", alignRight: false },
-  { id: "score", label: "Score", alignRight: false },
-  { id: "reason", label: "Reason", alignRight: false },
-  { id: "details", label: "Details", alignRight: false },
+  { id: "FileName", label: "FileName", alignRight: false },
+  { id: "License Concluded", label: "License Concluded", alignRight: false },
+  { id: "File Copyright Test", label: "File Copyright Test", alignRight: false }
 ];
 
 // Fixme: Code refactor
 
-export default function ScorecardTable({ data }: any) {
+export default function Fossology({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [filterName, setFilterName] = useState("");
-  let scorecardData: any = data?.checks ?? [];
+
+  let fossologyData: any;
+  debugger;
+  if (data?.length) fossologyData = data;
+  else fossologyData = [];
   const filteredUsers = applySortFilter(
-    scorecardData,
+    fossologyData,
     getComparator("desc", "name"),
     filterName
   );
@@ -69,22 +72,20 @@ export default function ScorecardTable({ data }: any) {
                   .map(
                     (
                       row: {
-                        name: string;
-                        score: any;
-                        reason: any;
-                        details: string[];
+                        FileName: string;
+                        LicenseConcluded: string;
+                        FileCopyrightText: string;
                       },
                       index: number
                     ) => {
-                      const { name, score, reason, details } = row;
+                        const { FileName, LicenseConcluded, FileCopyrightText } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
-                            {name}
+                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
+                            {FileName}
                           </TableCell>
-                          <TableCell align="left">{score}</TableCell>
-                          <TableCell align="left">{reason}</TableCell>
-                          <TableCell align="left">{details}</TableCell>
+                          <TableCell align="left">{LicenseConcluded}</TableCell>
+                          <TableCell align="left">{FileCopyrightText}</TableCell>
                         </TableRow>
                       );
                     }
@@ -103,7 +104,7 @@ export default function ScorecardTable({ data }: any) {
             }}
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={scorecardData.length}
+            count={fossologyData.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

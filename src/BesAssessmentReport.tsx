@@ -10,6 +10,9 @@ import { assessment_datastore } from "./data-store/dataStore";
 import { assessment_path, assessment_report } from "./data-store/assessmentReport";
 import { verifyLink } from "./sections/AppOrderTimeline";
 import CodeQL from "./report/codeQL/CodeQL";
+import Sonarqube from "./report/sonarqube/Sonarqube";
+import Sbom from "./report/sbom/Sbom";
+import Fossology from "./report/fossology/Fossology";
 
 export const spanStyle: any = {
   fontSize: "1rem",
@@ -25,16 +28,13 @@ function displayReport(besReport: any, report: any): any {
     return <CodeQL data={report}/>
   }
   if (besReport === 'Sonarqube') {
-    return <ScorecardTable data={report}/>
-  }
-  if (besReport === 'Sonarqube') {
-    return <ScorecardTable data={report}/>
+    return <Sonarqube data={report}/>
   }
   if (besReport === 'Fossology') {
-    return <ScorecardTable data={report}/>
+    return <Fossology data={report}/>
   }
   if (besReport === 'SBOM') {
-    return <ScorecardTable data={report}/>
+    return <Sbom data={report}/>
   }
 }
 
@@ -44,7 +44,6 @@ function BesAssessmentReport() {
   besVersion = besVersion.slice(1);
   besReport = besReport.slice(1);
   const [report, setreport]: any = useState({});
-
   useEffect(() => {
     const link: string = `${assessment_datastore}/${besName}/${besVersion}/${assessment_path[besReport]}/${besName}-${besVersion}-${assessment_report[besReport]}-report.json`;
     verifyLink(link, setreport);

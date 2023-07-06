@@ -14,21 +14,26 @@ import {
 import { applySortFilter, getComparator } from "../../ProjectOfInterestTrack";
 
 const TABLE_HEAD = [
-  { id: "name", label: "Name", alignRight: false },
-  { id: "score", label: "Score", alignRight: false },
-  { id: "reason", label: "Reason", alignRight: false },
-  { id: "details", label: "Details", alignRight: false },
+  { id: "Package Name", label: "Package Name", alignRight: false },
+  { id: "Version", label: "Version", alignRight: false },
+  { id: "Supplier", label: "Supplier", alignRight: false },
+  { id: "Download Location", label: "Download Location", alignRight: false },
+  { id: "License", label: "License", alignRight: false }
 ];
 
 // Fixme: Code refactor
 
-export default function ScorecardTable({ data }: any) {
+export default function Sbom({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [filterName, setFilterName] = useState("");
-  let scorecardData: any = data?.checks ?? [];
+
+  let sonarqubeData: any;
+  debugger;
+  if (data?.packages) sonarqubeData = data?.packages;
+  else sonarqubeData = [];
   const filteredUsers = applySortFilter(
-    scorecardData,
+    sonarqubeData,
     getComparator("desc", "name"),
     filterName
   );
@@ -70,21 +75,23 @@ export default function ScorecardTable({ data }: any) {
                     (
                       row: {
                         name: string;
-                        score: any;
-                        reason: any;
-                        details: string[];
+                        versionInfo: string;
+                        supplier: string;
+                        downloadLocation: string;
+                        licenseDeclared: string;
                       },
                       index: number
                     ) => {
-                      const { name, score, reason, details } = row;
+                        const { name, versionInfo, supplier, downloadLocation, licenseDeclared } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
+                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
                             {name}
                           </TableCell>
-                          <TableCell align="left">{score}</TableCell>
-                          <TableCell align="left">{reason}</TableCell>
-                          <TableCell align="left">{details}</TableCell>
+                          <TableCell align="left">{versionInfo}</TableCell>
+                          <TableCell align="left">{supplier}</TableCell>
+                          <TableCell align="left">{downloadLocation}</TableCell>
+                          <TableCell align="left">{licenseDeclared}</TableCell>
                         </TableRow>
                       );
                     }
@@ -103,7 +110,7 @@ export default function ScorecardTable({ data }: any) {
             }}
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={scorecardData.length}
+            count={sonarqubeData.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
