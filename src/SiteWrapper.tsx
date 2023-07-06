@@ -3,38 +3,32 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
 
-import {
-  Site,
-  Nav,
-  Button,
-  RouterContextProvider,
-} from "tabler-react";
-
+import { Site, Nav, Button, RouterContextProvider } from "tabler-react";
 
 type Props = {
-  children: any,
+  children: any;
 };
 
 type State = {
-  notificationsObjects: any,
+  notificationsObjects: any;
 };
 
 type subNavItem = {
-  value: string,
-  to?: string,
-  icon?: string,
-  LinkComponent?: React.ElementType,
-  useExact?: boolean,
+  value: string;
+  to?: string;
+  icon?: string;
+  LinkComponent?: React.ElementType;
+  useExact?: boolean;
 };
 
 type navItem = {
-  value: string,
-  to?: string,
-  icon?: string,
-  active?: boolean,
-  LinkComponent?: React.ElementType,
-  subItems?: Array<subNavItem>,
-  useExact?: boolean,
+  value: string;
+  to?: string;
+  icon?: string;
+  active?: boolean;
+  LinkComponent?: React.ElementType;
+  subItems?: Array<subNavItem>;
+  useExact?: boolean;
 };
 
 const navBarItems: Array<navItem> = [
@@ -48,6 +42,12 @@ const navBarItems: Array<navItem> = [
     value: "Project Of Interest",
     icon: "box",
     to: "/POI",
+    useExact: true,
+  },
+  {
+    value: "Vulnerability Of Interest",
+    icon: "box",
+    to: "/VOI",
     useExact: true,
   },
 ];
@@ -73,7 +73,7 @@ class SiteWrapper extends React.Component<Props, State> {
                 Source code
               </Button>
             </Nav.Item>
-          )
+          ),
         }}
         navProps={{ itemsObjects: navBarItems }}
         routerContextComponentType={withRouter(RouterContextProvider)}

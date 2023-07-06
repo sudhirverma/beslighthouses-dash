@@ -18,7 +18,7 @@ const TABLE_HEAD = [
   { id: "Version", label: "Version", alignRight: false },
   { id: "Supplier", label: "Supplier", alignRight: false },
   { id: "Download Location", label: "Download Location", alignRight: false },
-  { id: "License", label: "License", alignRight: false }
+  { id: "License", label: "License", alignRight: false },
 ];
 
 // Fixme: Code refactor
@@ -82,10 +82,20 @@ export default function Sbom({ data }: any) {
                       },
                       index: number
                     ) => {
-                        const { name, versionInfo, supplier, downloadLocation, licenseDeclared } = row;
+                      const {
+                        name,
+                        versionInfo,
+                        supplier,
+                        downloadLocation,
+                        licenseDeclared,
+                      } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
+                          <TableCell
+                            align="left"
+                            sx={{ paddingLeft: "15px" }}
+                            padding="none"
+                          >
                             {name}
                           </TableCell>
                           <TableCell align="left">{versionInfo}</TableCell>

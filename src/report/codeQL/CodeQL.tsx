@@ -72,26 +72,37 @@ export default function CodeQL({ data }: any) {
               <TableBody>
                 {filteredUsers
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(
-                    (
-                      row: any,
-                      index: number
-                    ) => {
-                      return (
-                        <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
-                            {row.rule.description}
-                          </TableCell>
-                          <TableCell align="left">{row.rule.security_severity_level}</TableCell>
-                          <TableCell align="left">{row.most_recent_instance.environment}</TableCell>
-                          <TableCell align="left">{row.most_recent_instance.message.text}</TableCell>
-                          <TableCell align="left">{row.most_recent_instance.location.path}</TableCell>
-                          <TableCell align="left">{row.most_recent_instance.location.start_line}</TableCell>
-                          <TableCell align="left">{row.most_recent_instance.location.end_line}</TableCell>
-                        </TableRow>
-                      );
-                    }
-                  )}
+                  .map((row: any, index: number) => {
+                    return (
+                      <TableRow hover key={index} tabIndex={-1}>
+                        <TableCell
+                          align="center"
+                          sx={{ paddingLeft: "10px" }}
+                          padding="none"
+                        >
+                          {row.rule.description}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.rule.security_severity_level}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.most_recent_instance.environment}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.most_recent_instance.message.text}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.most_recent_instance.location.path}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.most_recent_instance.location.start_line}
+                        </TableCell>
+                        <TableCell align="left">
+                          {row.most_recent_instance.location.end_line}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
               </TableBody>
             </Table>
           </TableContainer>

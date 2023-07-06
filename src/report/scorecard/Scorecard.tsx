@@ -1,11 +1,6 @@
-import {
-  Card,
-  CardContent,
-  Grid,
-} from "@mui/material";
+import { Card, CardContent, Grid } from "@mui/material";
 import * as React from "react";
 import { spanStyle } from "../../BesAssessmentReport";
-
 
 export default function Scorecard({
   date,

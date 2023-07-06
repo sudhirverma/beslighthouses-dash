@@ -7,7 +7,10 @@ import { Card } from "@mui/material";
 import Scorecard from "./report/scorecard/Scorecard";
 import ScorecardTable from "./report/scorecard/ScorecardTable";
 import { assessment_datastore } from "./data-store/dataStore";
-import { assessment_path, assessment_report } from "./data-store/assessmentReport";
+import {
+  assessment_path,
+  assessment_report,
+} from "./data-store/assessmentReport";
 import { verifyLink } from "./sections/AppOrderTimeline";
 import CodeQL from "./report/codeQL/CodeQL";
 import Sonarqube from "./report/sonarqube/Sonarqube";
@@ -21,20 +24,20 @@ export const spanStyle: any = {
 };
 
 function displayReport(besReport: any, report: any): any {
-  if (besReport === 'Scorecard') {
-    return <ScorecardTable data={report}/>
+  if (besReport === "Scorecard") {
+    return <ScorecardTable data={report} />;
   }
-  if (besReport === 'Codeql') {
-    return <CodeQL data={report}/>
+  if (besReport === "Codeql") {
+    return <CodeQL data={report} />;
   }
-  if (besReport === 'Sonarqube') {
-    return <Sonarqube data={report}/>
+  if (besReport === "Sonarqube") {
+    return <Sonarqube data={report} />;
   }
-  if (besReport === 'Fossology') {
-    return <Fossology data={report}/>
+  if (besReport === "Fossology") {
+    return <Fossology data={report} />;
   }
-  if (besReport === 'SBOM') {
-    return <Sbom data={report}/>
+  if (besReport === "SBOM") {
+    return <Sbom data={report} />;
   }
 }
 
@@ -53,7 +56,13 @@ function BesAssessmentReport() {
       <Page.Content key={"pagekey"} title={`${besReport} Report: ${besName}`}>
         <Card key={"cardkey"}>
           {besReport === "Scorecard" ? (
-            <Scorecard date={report?.date ?? ''} version={report?.scorecard?.version ?? ''} github={report?.repo?.name ?? ''} commit={report?.scorecard?.commit ?? ''} score={report?.score ?? ''} />
+            <Scorecard
+              date={report?.date ?? ""}
+              version={report?.scorecard?.version ?? ""}
+              github={report?.repo?.name ?? ""}
+              commit={report?.scorecard?.commit ?? ""}
+              score={report?.score ?? ""}
+            />
           ) : (
             <></>
           )}

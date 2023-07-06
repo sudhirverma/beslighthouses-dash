@@ -16,7 +16,11 @@ import { applySortFilter, getComparator } from "../../ProjectOfInterestTrack";
 const TABLE_HEAD = [
   { id: "FileName", label: "FileName", alignRight: false },
   { id: "License Concluded", label: "License Concluded", alignRight: false },
-  { id: "File Copyright Test", label: "File Copyright Test", alignRight: false }
+  {
+    id: "File Copyright Test",
+    label: "File Copyright Test",
+    alignRight: false,
+  },
 ];
 
 // Fixme: Code refactor
@@ -78,14 +82,21 @@ export default function Fossology({ data }: any) {
                       },
                       index: number
                     ) => {
-                        const { FileName, LicenseConcluded, FileCopyrightText } = row;
+                      const { FileName, LicenseConcluded, FileCopyrightText } =
+                        row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
+                          <TableCell
+                            align="left"
+                            sx={{ paddingLeft: "15px" }}
+                            padding="none"
+                          >
                             {FileName}
                           </TableCell>
                           <TableCell align="left">{LicenseConcluded}</TableCell>
-                          <TableCell align="left">{FileCopyrightText}</TableCell>
+                          <TableCell align="left">
+                            {FileCopyrightText}
+                          </TableCell>
                         </TableRow>
                       );
                     }

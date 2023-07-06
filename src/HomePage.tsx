@@ -2,9 +2,9 @@
 
 import * as React from "react";
 
-import { Page, Form } from "tabler-react";
+import { Page } from "tabler-react";
 import SiteWrapper from "./SiteWrapper";
-import { Card, Grid, Typography } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 
 import YourSvgComponent from "./image/favicon.png";
 
@@ -20,12 +20,18 @@ function Home() {
             sx={{ height: "100%" }}
           >
             <Grid item>
-              <img
-                src={YourSvgComponent}
-                alt="Icon"
-              />
+              <img src={YourSvgComponent} alt="Icon" />
             </Grid>
-              <h1 style={{fontSize: '1.5rem', fontWeight: 400, lineHeight: '2.5rem'}}>Community Dashboard for security assessment of Open Source Security Tech Stacks</h1>
+            <h1
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: 400,
+                lineHeight: "2.5rem",
+              }}
+            >
+              Community Dashboard for security assessment of Open Source
+              Security Tech Stacks
+            </h1>
           </Grid>
         </Card>
       </Page.Content>

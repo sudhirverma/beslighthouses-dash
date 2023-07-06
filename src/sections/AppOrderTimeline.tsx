@@ -4,7 +4,10 @@ import { Card, Typography, CardContent, Grid, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchJsonReportOsspoiMaster } from "../utils/fatch_json_report";
 import { assessment_datastore } from "../data-store/dataStore";
-import { assessment_path, assessment_report } from "../data-store/assessmentReport";
+import {
+  assessment_path,
+  assessment_report,
+} from "../data-store/assessmentReport";
 import { Link } from "react-router-dom";
 
 AppOrderTimeline.propTypes = {
@@ -35,25 +38,30 @@ const CheckLink = ({ version, name, report }: any) => {
   const [linkStatus, setLinkStatus]: any = useState({});
   useEffect(() => {
     if (version.trim()) {
-      let link: string = `${assessment_datastore}/${name}/${version}/${assessment_path[report]}/${name}-${version}-${assessment_report[report]}-report.json`
-      verifyLink(
-        link,
-        setLinkStatus
-      );
+      let link: string = `${assessment_datastore}/${name}/${version}/${assessment_path[report]}/${name}-${version}-${assessment_report[report]}-report.json`;
+      verifyLink(link, setLinkStatus);
     }
   }, [version]);
   let linkStatusLength: number = Object.values(linkStatus).length;
   if (report === "Criticality Score" && linkStatusLength !== 0)
     return (
-      <Typography variant="subtitle1" color="inherit">{linkStatus.criticality_score}</Typography>
+      <Typography variant="subtitle1" color="inherit">
+        {linkStatus.criticality_score}
+      </Typography>
     );
-  const pathName: string = `/bes_assessment_report/:${name}/:${version}/:${report}`
+  const pathName: string = `/bes_assessment_report/:${name}/:${version}/:${report}`;
   if (report === "Scorecard" && linkStatusLength !== 0) {
-    return <Link to={{pathname: pathName, state: linkStatus}}>{linkStatus.score}</Link>;
+    return (
+      <Link to={{ pathname: pathName, state: linkStatus }}>
+        {linkStatus.score}
+      </Link>
+    );
     // href={`/bes_version_history/${version}/${name}`}
   }
   if (linkStatusLength !== 0)
-    return <Link to={{pathname: pathName, state: linkStatus}}>Click here</Link>;
+    return (
+      <Link to={{ pathname: pathName, state: linkStatus }}>Click here</Link>
+    );
   return (
     <Typography variant="subtitle1" color="inherit">
       Not Available

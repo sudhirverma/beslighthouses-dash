@@ -1,11 +1,10 @@
-import merge from 'lodash/merge';
+import merge from "lodash/merge";
 // ----------------------------------------------------------------------
 
 export default function useChart(options: any) {
-
   const LABEL_TOTAL = {
     show: true,
-    label: 'Total',
+    label: "Total",
   };
 
   const LABEL_VALUE = {
@@ -13,7 +12,6 @@ export default function useChart(options: any) {
   };
 
   const baseOptions = {
-
     // Chart
     chart: {
       toolbar: { show: false },
@@ -24,13 +22,13 @@ export default function useChart(options: any) {
     states: {
       hover: {
         filter: {
-          type: 'lighten',
+          type: "lighten",
           value: 0.04,
         },
       },
       active: {
         filter: {
-          type: 'darken',
+          type: "darken",
           value: 0.88,
         },
       },
@@ -40,7 +38,7 @@ export default function useChart(options: any) {
     fill: {
       opacity: 1,
       gradient: {
-        type: 'vertical',
+        type: "vertical",
         shadeIntensity: 0,
         opacityFrom: 0.4,
         opacityTo: 0,
@@ -54,8 +52,8 @@ export default function useChart(options: any) {
     // Stroke
     stroke: {
       width: 3,
-      curve: 'smooth',
-      lineCap: 'round',
+      curve: "smooth",
+      lineCap: "round",
     },
 
     // Grid
@@ -90,15 +88,14 @@ export default function useChart(options: any) {
     legend: {
       show: true,
       fontSize: String(13),
-      position: 'top',
-      horizontalAlign: 'right',
+      position: "top",
+      horizontalAlign: "right",
       markers: {
         radius: 12,
       },
       fontWeight: 500,
       itemMargin: { horizontal: 12 },
-      labels: {
-      },
+      labels: {},
     },
 
     // plotOptions
@@ -106,9 +103,9 @@ export default function useChart(options: any) {
       // Bar
       bar: {
         borderRadius: 4,
-        columnWidth: '28%',
-        borderRadiusApplication: 'end',
-        borderRadiusWhenStacked: 'last',
+        columnWidth: "28%",
+        borderRadiusApplication: "end",
+        borderRadiusWhenStacked: "last",
       },
 
       // Pie + Donut
@@ -125,7 +122,7 @@ export default function useChart(options: any) {
       // Radialbar
       radialBar: {
         track: {
-          strokeWidth: '100%',
+          strokeWidth: "100%",
         },
         dataLabels: {
           value: LABEL_VALUE,
@@ -136,16 +133,14 @@ export default function useChart(options: any) {
       // Radar
       radar: {
         polygons: {
-          fill: { colors: ['transparent'] },
+          fill: { colors: ["transparent"] },
         },
       },
 
       // polarArea
       polarArea: {
-        rings: {
-        },
-        spokes: {
-        },
+        rings: {},
+        spokes: {},
       },
     },
 
@@ -153,12 +148,12 @@ export default function useChart(options: any) {
     responsive: [
       {
         options: {
-          plotOptions: { bar: { columnWidth: '40%' } },
+          plotOptions: { bar: { columnWidth: "40%" } },
         },
       },
       {
         options: {
-          plotOptions: { bar: { columnWidth: '32%' } },
+          plotOptions: { bar: { columnWidth: "32%" } },
         },
       },
     ],

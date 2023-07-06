@@ -79,7 +79,11 @@ export default function ScorecardTable({ data }: any) {
                       const { name, score, reason, details } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="center" sx={{paddingLeft: '10px'}} padding="none">
+                          <TableCell
+                            align="center"
+                            sx={{ paddingLeft: "10px" }}
+                            padding="none"
+                          >
                             {name}
                           </TableCell>
                           <TableCell align="left">{score}</TableCell>

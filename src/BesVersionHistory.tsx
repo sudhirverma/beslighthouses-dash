@@ -36,7 +36,7 @@ export const osspoiMasterAndSummary = async (
   setVersionSummary(summary);
 };
 
-const useStyles: any = makeStyles((theme: any) => ({
+const useStyles: any = makeStyles(() => ({
   select: {
     minWidth: "155px",
     "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select":

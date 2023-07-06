@@ -17,7 +17,7 @@ const TABLE_HEAD = [
   { id: "Component", label: "Component", alignRight: false },
   { id: "Type", label: "Type", alignRight: false },
   { id: "Messaage", label: "Messaage", alignRight: false },
-  { id: "Line", label: "Line", alignRight: false }
+  { id: "Line", label: "Line", alignRight: false },
 ];
 
 // Fixme: Code refactor
@@ -79,10 +79,14 @@ export default function Sonarqube({ data }: any) {
                       },
                       index: number
                     ) => {
-                        const { component, type, message, line } = row;
+                      const { component, type, message, line } = row;
                       return (
                         <TableRow hover key={index} tabIndex={-1}>
-                          <TableCell align="left" sx={{paddingLeft: '15px'}} padding="none">
+                          <TableCell
+                            align="left"
+                            sx={{ paddingLeft: "15px" }}
+                            padding="none"
+                          >
                             {component}
                           </TableCell>
                           <TableCell align="left">{type}</TableCell>

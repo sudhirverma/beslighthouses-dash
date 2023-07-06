@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { styled, alpha } from '@mui/material/styles';
-import { Toolbar, OutlinedInput, InputAdornment } from '@mui/material';
+import { styled, alpha } from "@mui/material/styles";
+import { Toolbar, OutlinedInput, InputAdornment } from "@mui/material";
 import Iconify from "../iconify";
 // component
 
@@ -11,22 +11,22 @@ import Iconify from "../iconify";
 
 const StyledRoot = styled(Toolbar)(({ theme }) => ({
   height: 96,
-  display: 'flex',
-  justifyContent: 'space-between',
+  display: "flex",
+  justifyContent: "space-between",
   padding: theme.spacing(0, 0, 0, 0),
 }));
 
 const StyledSearch = styled(OutlinedInput)(({ theme }: any) => ({
   width: 240,
-  transition: theme.transitions.create(['box-shadow', 'width'], {
+  transition: theme.transitions.create(["box-shadow", "width"], {
     easing: theme.transitions.easing.easeInOut,
     duration: theme.transitions.duration.shorter,
   }),
-  '&.Mui-focused': {
+  "&.Mui-focused": {
     width: 420,
     // boxShadow: theme?.customShadows?.z8,
   },
-  '& fieldset': {
+  "& fieldset": {
     borderWidth: `1px !important`,
     borderColor: `${alpha(theme.palette.grey[500], 0.32)} !important`,
   },
@@ -40,19 +40,26 @@ PoiListToolbar.propTypes = {
   onFilterName: PropTypes.func,
 };
 
-export default function PoiListToolbar({ numSelected, filterName, onFilterName }: any) {
+export default function PoiListToolbar({
+  numSelected,
+  filterName,
+  onFilterName,
+}: any) {
   return (
     <StyledRoot>
-        <StyledSearch
+      <StyledSearch
         value={filterName}
         onChange={onFilterName}
         placeholder="Search project..."
         startAdornment={
-            <InputAdornment position="start">
-                <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled', width: 20, height: 20 }} />
-            </InputAdornment>
+          <InputAdornment position="start">
+            <Iconify
+              icon="eva:search-fill"
+              sx={{ color: "text.disabled", width: 20, height: 20 }}
+            />
+          </InputAdornment>
         }
-        />
+      />
     </StyledRoot>
   );
 }
