@@ -9,12 +9,34 @@ import ScorecardTable from "./report/scorecard/ScorecardTable";
 import { assessment_datastore } from "./data-store/dataStore";
 import { assessment_path, assessment_report } from "./data-store/assessmentReport";
 import { verifyLink } from "./sections/AppOrderTimeline";
+import CodeQL from "./report/codeQL/CodeQL";
 
 export const spanStyle: any = {
   fontSize: "1rem",
   fontWeight: 700,
   paddingRight: "13px",
 };
+
+function displayReport(besReport: any, report: any): any {
+  if (besReport === 'Scorecard') {
+    return <ScorecardTable data={report}/>
+  }
+  if (besReport === 'Codeql') {
+    return <CodeQL data={report}/>
+  }
+  if (besReport === 'Sonarqube') {
+    return <ScorecardTable data={report}/>
+  }
+  if (besReport === 'Sonarqube') {
+    return <ScorecardTable data={report}/>
+  }
+  if (besReport === 'Fossology') {
+    return <ScorecardTable data={report}/>
+  }
+  if (besReport === 'SBOM') {
+    return <ScorecardTable data={report}/>
+  }
+}
 
 function BesAssessmentReport() {
   let { besName, besVersion, besReport }: any = useParams();
@@ -27,7 +49,6 @@ function BesAssessmentReport() {
     const link: string = `${assessment_datastore}/${besName}/${besVersion}/${assessment_path[besReport]}/${besName}-${besVersion}-${assessment_report[besReport]}-report.json`;
     verifyLink(link, setreport);
   }, []);
-  debugger;
   return (
     <SiteWrapper>
       <Page.Content key={"pagekey"} title={`${besReport} Report: ${besName}`}>
@@ -38,7 +59,7 @@ function BesAssessmentReport() {
             <></>
           )}
         </Card>
-        <ScorecardTable data={report}/>
+        {displayReport(besReport, report)}
       </Page.Content>
     </SiteWrapper>
   );
