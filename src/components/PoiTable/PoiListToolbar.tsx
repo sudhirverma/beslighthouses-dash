@@ -41,7 +41,6 @@ PoiListToolbar.propTypes = {
 };
 
 export default function PoiListToolbar({
-  numSelected,
   filterName,
   onFilterName,
 }: any) {
