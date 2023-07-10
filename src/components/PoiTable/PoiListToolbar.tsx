@@ -35,12 +35,13 @@ const StyledSearch = styled(OutlinedInput)(({ theme }: any) => ({
 // ----------------------------------------------------------------------
 
 PoiListToolbar.propTypes = {
-  numSelected: PropTypes.number,
   filterName: PropTypes.string,
   onFilterName: PropTypes.func,
+  placeholderName: PropTypes.string
 };
 
 export default function PoiListToolbar({
+  placeholderName,
   filterName,
   onFilterName,
 }: any) {
@@ -49,7 +50,7 @@ export default function PoiListToolbar({
       <StyledSearch
         value={filterName}
         onChange={onFilterName}
-        placeholder="Search project..."
+        placeholder={placeholderName}
         startAdornment={
           <InputAdornment position="start">
             <Iconify

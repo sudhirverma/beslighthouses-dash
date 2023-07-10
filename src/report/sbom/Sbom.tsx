@@ -29,7 +29,6 @@ export default function Sbom({ data }: any) {
   const [filterName, setFilterName] = useState("");
 
   let sonarqubeData: any;
-  debugger;
   if (data?.packages) sonarqubeData = data?.packages;
   else sonarqubeData = [];
   const filteredUsers = applySortFilter(

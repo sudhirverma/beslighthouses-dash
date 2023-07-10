@@ -118,7 +118,7 @@ export default function UserPage() {
       <Container style={{ padding: "0px", marginTop: "12px" }}>
         <Card>
           <PoiListToolbar
-            numSelected={selected.length}
+            placeholderName="Search project..."
             filterName={filterName}
             onFilterName={handleFilterByName}
           />
