@@ -8,6 +8,7 @@ import ProjectOfInterest from "./ProjectOfInterest";
 import BesAssessmentReport from "./BesAssessmentReport";
 import VulnerabilityOfInterest from "./VulnerabilityOfInterest";
 import ShowVulnerabilityDetails from "./report/vulnerability/ShowVulnerabilityDetails";
+import BeSVersionHistory from "./BesVersionHistory";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route
             exact
             path="/bes_version_history/:besId/:besName"
-            component={VulnerabilityOfInterest}
+            component={BeSVersionHistory}
           />
           <Route
             exact
