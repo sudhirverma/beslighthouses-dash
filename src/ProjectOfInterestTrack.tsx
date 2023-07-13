@@ -76,7 +76,7 @@ export default function UserPage() {
   if (projectOfInterestData.getPoiData("Project_of_interest")) {
     getUSERLIST = projectOfInterestData.getPoiData("Project_of_interest");
   }
-  const handleFilterByName = (event: any) => {
+  const handleFilterByName: any = (event: any) => {
     setPage(0);
     setFilterName(event.target.value);
   };
