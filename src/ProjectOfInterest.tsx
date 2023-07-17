@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Grid } from "@mui/material";
 
-import { Page } from "tabler-react";
 import SiteWrapper from "./SiteWrapper";
 import AppCurrentVisits from "./sections/PieChart";
 import ProjectOfInterestTrack from "./ProjectOfInterestTrack";
 import { projectOfInterestData } from "./data/poi_data";
+import Page from "./components/Page";
 
 export const fetchOsspoiMaterData = async () => {
   const osspoi: any = JSON.parse(

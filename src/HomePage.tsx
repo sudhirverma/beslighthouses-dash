@@ -2,11 +2,11 @@
 
 import * as React from "react";
 
-import { Page } from "tabler-react";
 import SiteWrapper from "./SiteWrapper";
 import { Card, Grid } from "@mui/material";
 
 import YourSvgComponent from "./image/favicon.png";
+import Page from "./components/Page";
 
 function Home() {
   return (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import SiteWrapper from "./SiteWrapper";
-import { Page } from "tabler-react";
 import { useParams } from "react-router-dom";
 import { Card } from "@mui/material";
 import Scorecard from "./report/scorecard/Scorecard";
@@ -11,11 +10,12 @@ import {
   assessment_path,
   assessment_report,
 } from "./data-store/assessmentReport";
-import { verifyLink } from "./sections/AppOrderTimeline";
+import { verifyLink } from "./sections/AssessmentReport";
 import CodeQL from "./report/codeQL/CodeQL";
 import Sonarqube from "./report/sonarqube/Sonarqube";
 import Sbom from "./report/sbom/Sbom";
 import Fossology from "./report/fossology/Fossology";
+import Page from "./components/Page";
 
 export const spanStyle: any = {
   fontSize: "1rem",

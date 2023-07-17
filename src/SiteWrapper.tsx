@@ -3,7 +3,10 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
 
-import { Site, Nav, Button, RouterContextProvider } from "tabler-react";
+import Nav from "./components/Nav";
+import Button from "./components/Button/Button";
+import Site from "./components/Site";
+import RouterContextProvider from "./components/helpers/RouterContextProvider";
 
 type Props = {
   children: any;
