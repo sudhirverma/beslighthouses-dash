@@ -28,6 +28,7 @@ const TABLE_HEAD = [
 export default function CodeQL({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [filterName, setFilterName] = useState("");
 
   let codeQlData: any;

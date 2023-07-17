@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import * as React from "react";
 
 import SiteWrapper from "./SiteWrapper";
@@ -90,6 +91,7 @@ function BeSVersionHistory() {
       besName.slice(1),
       setVersionSummary
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [selectedOption, setSelectedOption] = React.useState("");
   if (!selectedOption && versionSummary[0]?.version) {

@@ -25,6 +25,7 @@ const TABLE_HEAD = [
 export default function ScorecardTable({ data }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [filterName, setFilterName] = useState("");
   let scorecardData: any = data?.checks ?? [];
   const filteredUsers = applySortFilter(

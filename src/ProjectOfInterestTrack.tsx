@@ -67,6 +67,7 @@ export function getComparator(order: string, orderBy: string) {
 
 export default function UserPage() {
   const [page, setPage] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selected, setSelected] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [order, setOrder] = useState("asc");

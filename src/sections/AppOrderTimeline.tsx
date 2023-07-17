@@ -1,4 +1,3 @@
-// @mui
 import PropTypes from "prop-types";
 import { Card, Typography, CardContent, Grid, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -41,6 +40,7 @@ const CheckLink = ({ version, name, report }: any) => {
       let link: string = `${assessment_datastore}/${name}/${version}/${assessment_path[report]}/${name}-${version}-${assessment_report[report]}-report.json`;
       verifyLink(link, setLinkStatus);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [version]);
   let linkStatusLength: number = Object.values(linkStatus).length;
   if (report === "Criticality Score" && linkStatusLength !== 0)

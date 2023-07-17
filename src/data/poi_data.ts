@@ -22,7 +22,7 @@ export class ProjectOfInterestData {
     besName: string
   ): Promise<any> {
     return await fetchJsonReportOsspoiMaster(
-      version_details + besId + "-" + besName + "-" + "Versiondetails.json"
+      version_details + besId + "-" + besName + "-Versiondetails.json"
     );
   }
 }

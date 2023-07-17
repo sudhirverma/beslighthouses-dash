@@ -50,6 +50,7 @@ function BesAssessmentReport() {
   useEffect(() => {
     const link: string = `${assessment_datastore}/${besName}/${besVersion}/${assessment_path[besReport]}/${besName}-${besVersion}-${assessment_report[besReport]}-report.json`;
     verifyLink(link, setreport);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SiteWrapper>
